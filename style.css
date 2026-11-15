@@ -1,0 +1,280 @@
+html {
+  box-sizing: border-box;
+  /* для вырезов на моб устройствах */
+  padding-top: env(safe-area-inset-top, 0);
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  
+}
+      
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+      
+h1,h2,h3,h4,h5,h6,p {
+  margin: 0;
+  padding: 0;
+}
+
+/* ### variables.css ### */
+
+:root {
+
+  /* preview */
+  --bg-preview-btn: rgba(255, 255, 240, 0.2);
+  --bg-preview-btn-active: rgba(10, 127, 148, 0.6);
+  --color-text-preview: #000000;
+  --bg-text-preview: rgba(255, 255, 255, 0.1);
+  /* header */
+  --color-header: rgba(255, 255, 255, 0.8);
+  --color-header-hII: rgba(255, 255, 255, 0.6);
+  /* main */
+  --color-p-card: #2b3228;  
+  --bg-btn-card: rgba(255, 255, 255, 0.60);
+  /* footer */
+  --bg-footer: rgba(0, 0, 0, 0.65);
+  --color-footer: rgba(255, 255, 255, 0.6);
+}
+
+/* ### */
+
+/* fonts */
+.text-h1 {
+  font-size: 24px;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.2;
+}
+.text-h2 {
+  font-size: 20px;
+  font-weight: 400;
+  font-family: "Oswald", sans-serif;
+  line-height: 1.2;
+}
+
+.p-text {
+  font-size: 20px;
+  font-weight: 400;
+  font-family: "Oswald", sans-serif;
+  line-height: 1.2;
+}
+
+/*  */
+body {
+  background: url('/img/general.jpeg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.container {
+  width: 90%;       /* 90% от ширины экрана */
+  max-width: 540px; /* но не шире 540 px */
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ### preview.css ### */
+
+.preview {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-image: url('/bgframe.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preview::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.preview-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 16px;
+}
+
+.p-preview {
+  font-size: 16px;
+  padding: 0 20px;
+  text-align: justify;
+  margin-bottom: 30px;
+  background-color: var(--bg-text-preview);
+  border-radius: 8px;
+  color: var(--color-text-preview);
+}
+
+.preview-h2 {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.btn-preview {
+  display: inline-block;
+  padding: 14px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: black;
+  background-color: var(--bg-preview-btn);
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.btn-preview:active {
+  transform: scale(0.9);
+  background-color: var(--bg-preview-btn-active);
+}
+
+/* ### */
+
+/* Header */
+
+.header {
+  padding-top: 1rem;
+}
+
+.header-h2 {
+  text-align: left;
+  color: var(--color-header-hII);
+  text-transform: uppercase;
+}
+
+.header-h1 {
+  padding-top: 2rem;
+  text-align: center;
+  color: var(--color-header);
+  text-transform: uppercase;
+}
+
+/* Main */
+
+.main {
+  margin-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px;
+  align-items: center;
+  justify-items: center;
+}
+.grid-item { 
+  width: 100%; /* на всю ширину колонки */ 
+  max-width: 380px; /* но не шире 380 px */ 
+  height: auto; /* высота по контенту */ 
+  aspect-ratio: 1 / 1; /* квадрат, если нужно */ 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  overflow: hidden;  /* обрезает углы у кнопки если будут */
+}
+.btn-card {
+  width: 100%;
+  height: 100%;
+  border: none;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  background-color: var(--bg-btn-card);
+  cursor: pointer; /* рука при наведении */
+  transition: transform 0.2s ease; /* лёгкий эффект нажатия */
+}
+.btn-card:active {
+  transform: scale(0.98); /* чуть «вдавливается» при нажатии */
+}
+.img-card {
+  width: 100%;
+  height: 100%;
+  border: none;
+  object-fit: cover;  /* чтобы не сплющивалось из-за aspect-ratio */
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  transition: transform 0.8s ease, opacity 0.3s ease;
+}
+.img-card-active {
+  opacity: 1;
+  transform: rotate(360deg);
+}
+.p-card {
+  color: var(--color-p-card);
+  text-shadow: 0 0 8px var(--shadow-p-card);
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform: translate(-50%, 50%);
+  transition: opacity 0.3s ease;
+}
+.p-card-active {
+  opacity: 0;
+}
+
+/* Footer */
+
+.footer {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: var(--bg-footer);
+}
+.p-footer {
+  color: var(--color-footer);
+  font-size: 14px;
+  text-align: center;
+}
+
+/* ### media.css ### */
+
+/* перестройка на одну колонку*/
+@media (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+@media (min-width: 600px) {
+  .p-preview {
+    font-size: 20px;
+  }
+}
+
+/* тёмная тема*/
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* preview */
+    --bg-preview-btn: rgba(255, 255, 240, 0.2);
+    --bg-preview-btn-active: rgba(10, 127, 148, 0.6);
+    --color-text-preview: #000000;
+    --bg-text-preview: rgba(255, 255, 255, 0.1);
+    /* header */
+    --color-header: rgba(255, 255, 255, 0.8);
+    --color-header-hII: rgba(255, 255, 255, 0.6);
+    /* main */
+    --color-p-card: #2b3228;  
+    --bg-btn-card: rgba(255, 255, 255, 0.60);
+    /* footer */
+    --bg-footer: rgba(0, 0, 0, 0.65);
+    --color-footer: rgba(255, 255, 255, 0.6);
+  }
+}
+
+/* ### */
