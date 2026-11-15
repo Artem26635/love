@@ -60,7 +60,7 @@ h1,h2,h3,h4,h5,h6,p {
 
 /*  */
 body {
-  background: url('/img/general.jpeg');
+  background: url('general.jpeg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -82,7 +82,7 @@ body {
   position: relative;
   width: 100%;
   height: 100vh;
-  background-image: url('/bgframe.jpg');
+  background-image: url('bgframe.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
